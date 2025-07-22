@@ -1,0 +1,82 @@
+name: Simple Cross-Platform Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install briefcase
+        pip install ebooklib beautifulsoup4 xhtml2pdf python-docx pillow requests
+    
+    - name: Create icon
+      run: |
+        mkdir -p src/notebooklm_converter/resources
+        cd src/notebooklm_converter/resources
+        python -c "from PIL import Image; img = Image.new('RGBA', (512, 512), (70, 130, 180, 255)); img.save('icon-512.png')"
+        echo "Icon created"
+    
+    - name: Build app
+      run: |
+        briefcase create macOS
+        briefcase build macOS
+        briefcase package macOS
+    
+    - name: Upload macOS app
+      uses: actions/upload-artifact@v4
+      with:
+        name: macos-app
+        path: dist/*.dmg
+
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install briefcase
+        pip install ebooklib beautifulsoup4 xhtml2pdf python-docx pillow requests
+    
+    - name: Create icon
+      run: |
+        mkdir -p src/notebooklm_converter/resources
+        cd src/notebooklm_converter/resources
+        python -c "from PIL import Image; img = Image.new('RGBA', (512, 512), (70, 130, 180, 255)); img.save('icon-512.png')"
+        echo "Icon created"
+      shell: bash
+    
+    - name: Build app
+      run: |
+        briefcase create windows
+        briefcase build windows
+        briefcase package windows
+    
+    - name: Upload Windows app
+      uses: actions/upload-artifact@v4
+      with:
+        name: windows-app
+        path: dist/*.msi
