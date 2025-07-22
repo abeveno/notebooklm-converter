@@ -1,0 +1,62 @@
+name: Debug Build
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    
+    - name: Debug project structure
+      run: |
+        echo "=== Current directory ==="
+        pwd
+        echo ""
+        echo "=== Directory contents ==="
+        ls -la
+        echo ""
+        echo "=== Source structure ==="
+        find . -name "*.py" -type f | head -20
+        echo ""
+        echo "=== Check key files ==="
+        echo "main.py exists:" 
+        ls -la main.py || echo "NOT FOUND"
+        echo ""
+        echo "src/ exists:"
+        ls -la src/ || echo "NOT FOUND"
+        echo ""
+        echo "pyproject.toml exists:"
+        ls -la pyproject.toml || echo "NOT FOUND"
+        echo ""
+        echo "=== pyproject.toml content ==="
+        cat pyproject.toml || echo "Cannot read pyproject.toml"
+        echo ""
+        echo "=== Python environment ==="
+        python --version
+        pip --version
+    
+    - name: Test basic imports
+      run: |
+        echo "=== Test basic Python ==="
+        python -c "print('Python works!')"
+        echo ""
+        echo "=== Test tkinter ==="
+        python -c "import tkinter; print('tkinter works!')" || echo "tkinter failed"
+        echo ""
+        echo "=== Install basic deps ==="
+        pip install briefcase
+        echo ""
+        echo "=== Test briefcase ==="
+        briefcase --version
+        echo ""
+        echo "=== Test briefcase commands ==="
+        briefcase --help
