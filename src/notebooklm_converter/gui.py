@@ -357,15 +357,8 @@ class NotebookLMConverterApp:
                             image_files.append((file_info.filename, image_data))
             
             elif file_ext == '.cbr':
-                try:
-                    import rarfile
-                    with rarfile.RarFile(comic_path, 'r') as rar_file:
-                        for file_info in rar_file.infolist():
-                            if file_info.filename.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.bmp')):
-                                image_data = rar_file.read(file_info.filename)
-                                image_files.append((file_info.filename, image_data))
-                except ImportError:
-                    raise Exception("rarfile library is not installed. Please install it with: pip install rarfile")
+                # CBR support temporarily disabled to avoid dependency conflicts
+                raise Exception("CBR format is not supported in this build. Please convert to CBZ format first.")
             
             # Convert images to text representation for NotebookLM
             content_text = f"# Comic Book: {os.path.splitext(os.path.basename(comic_path))[0]}\n\n"
