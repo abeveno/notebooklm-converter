@@ -1,6 +1,0 @@
-EbookLib>=0.18
-beautifulsoup4>=4.11.0
-lxml>=4.9.0
-xhtml2pdf>=0.2.5
-python-docx>=0.8.11
-markdown>=3.4.0

@@ -18,6 +18,20 @@ jobs:
       with:
         python-version: '3.9'
     
+    - name: Debug environment
+      run: |
+        echo "=== macOS Environment ==="
+        sw_vers
+        echo "=== Xcode tools ==="
+        xcode-select --print-path
+        echo "=== Python info ==="
+        python --version
+        pip --version
+        echo "=== Project Structure ==="
+        ls -la
+        echo "=== Source Structure ==="
+        ls -la src/notebooklm_converter/
+    
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -35,12 +49,27 @@ jobs:
         cd src/notebooklm_converter/resources
         python -c "from PIL import Image; img = Image.new('RGBA', (512, 512), (70, 130, 180, 255)); img.save('icon-512.png')"
         echo "Icon created"
+        ls -la
     
     - name: Build app
       run: |
+        echo "=== Creating macOS app ==="
         briefcase create macOS
+        echo "=== Building macOS app ==="
         briefcase build macOS
+        echo "=== Packaging macOS app ==="
         briefcase package macOS --adhoc-sign
+        echo "=== Checking results ==="
+        if [ -d "dist" ]; then
+          echo "Dist folder contents:"
+          ls -la dist/
+        else
+          echo "ERROR: No dist folder found!"
+        fi
+        if [ -d "build" ]; then
+          echo "Build folder contents:"
+          ls -la build/
+        fi
     
     - name: Upload macOS app
       uses: actions/upload-artifact@v4
@@ -49,6 +78,7 @@ jobs:
         path: |
           dist/*.dmg
           build/notebooklm-converter/macos/app/
+      if: always()
 
   build-windows:
     runs-on: windows-latest
@@ -62,6 +92,18 @@ jobs:
       with:
         python-version: '3.9'
     
+    - name: Debug environment
+      run: |
+        echo "=== Windows Environment ==="
+        echo "OS: $env:OS"
+        echo "Architecture: $env:PROCESSOR_ARCHITECTURE"
+        python --version
+        pip --version
+        echo "=== Project Structure ==="
+        dir
+        echo "=== Source Structure ==="
+        dir src\notebooklm_converter
+    
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -75,20 +117,37 @@ jobs:
     
     - name: Create icon
       run: |
-        mkdir -p src/notebooklm_converter/resources
-        cd src/notebooklm_converter/resources
+        mkdir -Force src\notebooklm_converter\resources
+        cd src\notebooklm_converter\resources
         python -c "from PIL import Image; img = Image.new('RGBA', (512, 512), (70, 130, 180, 255)); img.save('icon-512.png')"
         echo "Icon created"
-      shell: bash
+        dir
     
     - name: Build app
       run: |
+        echo "=== Creating Windows app ==="
         briefcase create windows
+        echo "=== Building Windows app ==="
         briefcase build windows
+        echo "=== Packaging Windows app ==="
         briefcase package windows
+        echo "=== Checking results ==="
+        if (Test-Path "dist") {
+          echo "Dist folder contents:"
+          dir dist
+        } else {
+          echo "ERROR: No dist folder found!"
+        }
+        if (Test-Path "build") {
+          echo "Build folder contents:"
+          dir build
+        }
     
     - name: Upload Windows app
       uses: actions/upload-artifact@v4
       with:
         name: windows-app
-        path: dist/*.msi
+        path: |
+          dist/*.msi
+          build/notebooklm-converter/windows/app/
+      if: always()

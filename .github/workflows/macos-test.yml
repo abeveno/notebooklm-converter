@@ -1,0 +1,87 @@
+name: macOS Only Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  macos-build:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    
+    - name: Debug environment
+      run: |
+        echo "=== macOS Environment ==="
+        sw_vers
+        echo ""
+        echo "=== Xcode tools ==="
+        xcode-select --print-path
+        echo ""
+        echo "=== Python info ==="
+        python --version
+        which python
+        echo ""
+        echo "=== Directory structure ==="
+        pwd
+        ls -la
+        echo ""
+        echo "=== Check files ==="
+        ls -la src/notebooklm_converter/
+        echo ""
+        echo "=== pyproject.toml preview ==="
+        head -20 pyproject.toml
+    
+    - name: Install dependencies  
+      run: |
+        python -m pip install --upgrade pip
+        pip install briefcase
+        
+    - name: Install project dependencies
+      run: |
+        pip install ebooklib beautifulsoup4 xhtml2pdf python-docx pillow requests
+        
+    - name: Test briefcase
+      run: |
+        echo "=== Test briefcase version ==="
+        briefcase --version
+        echo ""
+        echo "=== Test briefcase new ==="
+        briefcase new --no-input --template https://github.com/beeware/briefcase-template test-app com.example.testapp "Test App" "Test Description" "Test Author" "test@example.com" "https://example.com" "MIT" "3.8"
+        echo ""
+        echo "=== List files after briefcase new ==="
+        ls -la
+        
+    - name: Create simple icon
+      run: |
+        mkdir -p src/notebooklm_converter/resources
+        cd src/notebooklm_converter/resources
+        python -c "
+from PIL import Image, ImageDraw; 
+img = Image.new('RGBA', (512, 512), (70, 130, 180, 255)); 
+draw = ImageDraw.Draw(img); 
+draw.text((200, 230), 'NLM', fill='white'); 
+img.save('icon-512.png'); 
+print('Icon created')
+"
+        ls -la
+        
+    - name: Try briefcase create
+      run: |
+        echo "=== Attempting briefcase create ==="
+        briefcase create macOS || echo "Create failed"
+        echo ""
+        echo "=== Check if build directory created ==="
+        ls -la build/ || echo "No build directory"
+        
+    - name: Show briefcase logs
+      if: always()
+      run: |
+        echo "=== Briefcase logs ==="
+        find . -name "*.log" -exec echo "=== {} ===" \; -exec cat {} \; || echo "No log files found"
