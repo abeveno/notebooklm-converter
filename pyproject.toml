@@ -60,8 +60,6 @@ author_email = "support@notebooklm-converter.com"
 [tool.briefcase.app.notebooklm-converter]
 formal_name = "NotebookLM Converter"
 description = "Convert ebooks to formats optimized for NotebookLM"
-module_name = "notebooklm_converter.app"
-function_name = "main"
 long_description = """NotebookLM Converter is a powerful desktop application that converts various ebook formats (EPUB, MOBI, AZW/KFX, iBooks, CBR/CBZ) into formats optimized for Google NotebookLM (PDF, TXT, Markdown).
 
 Features:
@@ -72,7 +70,6 @@ Features:
 • Cross-platform compatibility
 
 Perfect for researchers, students, and anyone who wants to analyze books with AI tools."""
-icon = "src/notebooklm_converter/resources/icon"
 sources = [
     "src/notebooklm_converter",
 ]
@@ -92,15 +89,10 @@ requires = [
 ]
 
 [tool.briefcase.app.notebooklm-converter.macOS]
-requires = [
-    "toga-cocoa~=0.4.0",
-    "std-nslog~=1.0.0"
-]
+requires = []
 
 [tool.briefcase.app.notebooklm-converter.linux]
-requires = [
-    "toga-gtk~=0.4.0",
-]
+requires = []
 system_requires = [
     "libgirepository1.0-dev",
     "libcairo2-dev", 
@@ -145,6 +137,3 @@ system_runtime_requires = [
 
 [tool.briefcase.app.notebooklm-converter.windows]
 requires = []
-
-# Windows-specific packaging options
-system_installer_identity = "CN=NotebookLM Converter"
