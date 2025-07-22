@@ -137,3 +137,7 @@ system_runtime_requires = [
 
 [tool.briefcase.app.notebooklm-converter.windows]
 requires = []
+support_package = "Support\\Python"
+system_requires = [
+    "python3-tk",
+]

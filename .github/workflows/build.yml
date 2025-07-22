@@ -86,6 +86,10 @@ jobs:
         pip install pillow==10.0.1
         pip install requests==2.31.0
         pip install reportlab==4.0.4
+        
+    - name: Verify tkinter availability
+      run: python -c "import tkinter; print('tkinter available')"
+      continue-on-error: true
     
     - name: Create application icons
       run: |

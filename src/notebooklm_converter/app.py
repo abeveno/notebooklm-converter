@@ -3,7 +3,15 @@ NotebookLM Converter Application
 Main entry point for the Briefcase-compatible application.
 """
 
-import tkinter as tk
+try:
+    import tkinter as tk
+except ImportError:
+    try:
+        import Tkinter as tk  # Python 2 fallback
+    except ImportError:
+        print("Error: tkinter is not available. Please install Python with tkinter support.")
+        exit(1)
+
 from .gui import NotebookLMConverterApp
 
 
