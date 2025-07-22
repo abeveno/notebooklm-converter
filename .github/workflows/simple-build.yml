@@ -22,7 +22,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install briefcase
-        pip install ebooklib beautifulsoup4 xhtml2pdf python-docx pillow requests
+        pip install ebooklib==0.18
+        pip install beautifulsoup4==4.12.2
+        pip install python-docx==0.8.11
+        pip install pillow==10.0.1
+        pip install requests==2.31.0
+        pip install reportlab==4.0.4
     
     - name: Create icon
       run: |
@@ -59,7 +64,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install briefcase
-        pip install ebooklib beautifulsoup4 xhtml2pdf python-docx pillow requests
+        pip install ebooklib==0.18
+        pip install beautifulsoup4==4.12.2
+        pip install python-docx==0.8.11
+        pip install pillow==10.0.1
+        pip install requests==2.31.0
+        pip install reportlab==4.0.4
     
     - name: Create icon
       run: |

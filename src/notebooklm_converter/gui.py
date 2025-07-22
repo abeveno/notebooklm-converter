@@ -8,7 +8,14 @@ from tkinter import filedialog, messagebox, ttk
 import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
-from xhtml2pdf import pisa
+try:
+    from reportlab.pdfgen import canvas
+    from reportlab.lib.pagesizes import letter
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+    from reportlab.lib.styles import getSampleStyleSheet
+    PDF_AVAILABLE = True
+except ImportError:
+    PDF_AVAILABLE = False
 import markdown
 import os
 import base64
@@ -448,11 +455,24 @@ class NotebookLMConverterApp:
             </html>
             """
             
-            with open(output_path, "w+b") as pdf_file:
-                pisa_status = pisa.CreatePDF(html_content, dest=pdf_file, encoding='UTF-8')
-
-            if pisa_status.err:
-                raise Exception(f"Error creating PDF: {pisa_status.err}")
+            if not PDF_AVAILABLE:
+                raise Exception("PDF support not available. Please install reportlab.")
+            
+            # Use ReportLab for PDF generation
+            doc = SimpleDocTemplate(output_path, pagesize=letter)
+            styles = getSampleStyleSheet()
+            story = []
+            
+            # Clean content for PDF
+            clean_content = BeautifulSoup(content, 'html.parser').get_text()
+            
+            # Add content as paragraphs
+            for line in clean_content.split('\n'):
+                if line.strip():
+                    story.append(Paragraph(line.strip(), styles['Normal']))
+                    story.append(Spacer(1, 12))
+            
+            doc.build(story)
                 
         except Exception as e:
             raise Exception(f"Error creating PDF for NotebookLM: {str(e)}")
