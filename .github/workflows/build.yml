@@ -90,6 +90,10 @@ jobs:
     - name: Verify tkinter availability
       run: python -c "import tkinter; print('tkinter available')"
       continue-on-error: true
+      
+    - name: Test console mode
+      run: python -c "from src.notebooklm_converter.console import console_main; print('Console mode available')"
+      continue-on-error: true
     
     - name: Create application icons
       run: |
