@@ -60,6 +60,8 @@ author_email = "support@notebooklm-converter.com"
 [tool.briefcase.app.notebooklm-converter]
 formal_name = "NotebookLM Converter"
 description = "Convert ebooks to formats optimized for NotebookLM"
+module_name = "notebooklm_converter.app"
+function_name = "main"
 long_description = """NotebookLM Converter is a powerful desktop application that converts various ebook formats (EPUB, MOBI, AZW/KFX, iBooks, CBR/CBZ) into formats optimized for Google NotebookLM (PDF, TXT, Markdown).
 
 Features:
