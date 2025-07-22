@@ -137,3 +137,4 @@ system_runtime_requires = [
 
 [tool.briefcase.app.notebooklm-converter.windows]
 requires = []
+console_app = false

@@ -26,22 +26,24 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    
-    # macOS specific setup
-    - name: Install macOS dependencies
-      if: matrix.os == 'macos-latest'
-      run: |
-        # Xcode command line tools should be pre-installed on GitHub runners
-        xcode-select --print-path
-    
+        
     # Windows specific setup  
     - name: Install Windows dependencies
       if: matrix.os == 'windows-latest'
       run: |
         # Windows SDK should be available on GitHub runners
         echo "Windows build environment ready"
-    
-    # Linux specific setup
+        # Install tkinter explicitly for Windows
+        python -m pip install --upgrade pip
+        # Ensure we have full Python with tkinter
+        python -c "import tkinter; print('tkinter check passed')"
+        
+    # macOS specific setup
+    - name: Install macOS dependencies
+      if: matrix.os == 'macos-latest'
+      run: |
+        # Xcode command line tools should be pre-installed on GitHub runners
+        xcode-select --print-path    # Linux specific setup
     - name: Install Linux dependencies
       if: matrix.os == 'ubuntu-latest'
       run: |
