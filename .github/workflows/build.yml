@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false  # Không dừng các job khác khi một job fail
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-latest, macos-latest]  # Tạm thời remove ubuntu-latest
         python-version: [3.9]
     
     runs-on: ${{ matrix.os }}
@@ -46,7 +46,16 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get update
-        sudo apt-get install -y libgirepository1.0-dev libcairo2-dev libpango1.0-dev libwebkitgtk-3.0-dev libgtk-3-dev gir1.2-webkit-3.0
+        sudo apt-get install -y \
+          libgirepository1.0-dev \
+          libcairo2-dev \
+          libpango1.0-dev \
+          libgtk-3-dev \
+          libwebkit2gtk-4.0-dev \
+          gir1.2-webkit2-4.0 \
+          python3-gi \
+          python3-gi-cairo \
+          gir1.2-gtk-3.0
     
     - name: Install Python dependencies
       run: |
@@ -116,12 +125,13 @@ jobs:
         name: macos-installer
         path: dist/*.dmg
     
-    - name: Upload Linux artifacts
-      if: matrix.os == 'ubuntu-latest'
-      uses: actions/upload-artifact@v4
-      with:
-        name: linux-installer
-        path: dist/*.AppImage
+    # Linux artifacts upload - disabled for now
+    # - name: Upload Linux artifacts
+    #   if: matrix.os == 'ubuntu-latest'
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: linux-installer
+    #     path: dist/*.AppImage
 
   # Job để tạo release khi có tag
   release:
@@ -139,14 +149,12 @@ jobs:
         files: |
           windows-installer/*
           macos-installer/*
-          linux-installer/*
         body: |
           ## NotebookLM Converter ${{ github.ref_name }}
           
           ### Downloads
           - **Windows**: Download the `.msi` file
           - **macOS**: Download the `.dmg` file  
-          - **Linux**: Download the `.AppImage` file
           
           ### Features
           - Convert ebooks to NotebookLM-optimized formats
@@ -158,6 +166,5 @@ jobs:
           ### Installation
           - **Windows**: Double-click the MSI file to install
           - **macOS**: Mount the DMG and drag to Applications folder
-          - **Linux**: Make the AppImage executable and run
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
