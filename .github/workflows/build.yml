@@ -60,16 +60,23 @@ jobs:
         python --version
         pip --version
         pwd
-        ls -la
+        
+    - name: Debug environment - Unix
+      if: matrix.os != 'windows-latest'
+      run: ls -la
+        
+    - name: Debug environment - Windows
+      if: matrix.os == 'windows-latest'
+      run: Get-ChildItem
         
     - name: Install project dependencies
       run: |
-        pip install ebooklib>=0.18
-        pip install beautifulsoup4>=4.11.0
-        pip install xhtml2pdf>=0.2.5
-        pip install python-docx>=0.8.11
-        pip install pillow>=9.0.0
-        pip install requests>=2.28.0
+        pip install ebooklib==0.18
+        pip install beautifulsoup4==4.12.2
+        pip install python-docx==0.8.11
+        pip install pillow==10.0.1
+        pip install requests==2.31.0
+        pip install reportlab==4.0.4
     
     - name: Create application icons
       run: |
@@ -85,7 +92,13 @@ jobs:
       run: briefcase build
       continue-on-error: false
     
-    - name: Package Briefcase app
+    - name: Package Briefcase app - macOS
+      if: matrix.os == 'macos-latest'
+      run: briefcase package --adhoc-sign
+      continue-on-error: false
+      
+    - name: Package Briefcase app - Windows/Linux
+      if: matrix.os != 'macos-latest'
       run: briefcase package
       continue-on-error: false
     
