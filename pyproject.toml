@@ -54,7 +54,6 @@ project_name = "NotebookLM Converter"
 bundle = "com.notebooklm.converter"
 version = "1.0.0"
 url = "https://github.com/your-username/notebooklm-converter"
-license = "MIT"
 author = "NotebookLM Converter Team"
 author_email = "support@notebooklm-converter.com"
 
