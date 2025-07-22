@@ -97,8 +97,28 @@ jobs:
         python create_icon.py
       continue-on-error: true  # Không fail nếu icon creation lỗi
     
+    - name: Clean previous builds
+      run: |
+        if (Test-Path "build") {
+          Remove-Item -Recurse -Force build
+          echo "Removed existing build directory"
+        }
+        if (Test-Path "dist") {
+          Remove-Item -Recurse -Force dist
+          echo "Removed existing dist directory"
+        }
+      continue-on-error: true
+      if: matrix.os == 'windows-latest'
+      
+    - name: Clean previous builds - Unix
+      run: |
+        rm -rf build dist
+        echo "Removed existing build and dist directories"
+      continue-on-error: true
+      if: matrix.os != 'windows-latest'
+    
     - name: Create Briefcase app
-      run: briefcase create --clean
+      run: briefcase create
       continue-on-error: false
     
     - name: Debug after create
@@ -110,9 +130,21 @@ jobs:
           echo "No build directory found"
         }
       continue-on-error: true
+      if: matrix.os == 'windows-latest'
+      
+    - name: Debug after create - Unix
+      run: |
+        echo "=== Build directory after create ==="
+        if [ -d "build" ]; then
+          find build -type f -exec ls -la {} \;
+        else
+          echo "No build directory found"
+        fi
+      continue-on-error: true
+      if: matrix.os != 'windows-latest'
     
     - name: Build Briefcase app  
-      run: briefcase build --clean
+      run: briefcase build
       continue-on-error: false
     
     - name: Debug after build  
@@ -124,6 +156,18 @@ jobs:
           echo "No build directory found"
         }
       continue-on-error: true
+      if: matrix.os == 'windows-latest'
+      
+    - name: Debug after build - Unix
+      run: |
+        echo "=== Build directory after build ==="
+        if [ -d "build" ]; then
+          find build -type f -exec ls -la {} \;
+        else
+          echo "No build directory found"
+        fi
+      continue-on-error: true
+      if: matrix.os != 'windows-latest'
     
     - name: Package Briefcase app - macOS
       if: matrix.os == 'macos-latest'
