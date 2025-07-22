@@ -1,0 +1,147 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+    "briefcase>=0.3.16",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "notebooklm-converter"
+version = "1.0.0"
+description = "A GUI NotebookLM Converter application to convert ebooks to formats optimized for NotebookLM"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "NotebookLM Converter Team", email = "support@notebooklm-converter.com" }
+]
+keywords = ["ebook", "converter", "notebooklm", "epub", "pdf", "markdown"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+    "Topic :: Text Processing :: Markup",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "EbookLib>=0.18",
+    "beautifulsoup4>=4.11.0", 
+    "lxml>=4.9.0",
+    "xhtml2pdf>=0.2.5",
+    "markdown>=3.4.0",
+    "Pillow>=9.0.0",
+    "rarfile>=4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-username/notebooklm-converter"
+"Bug Reports" = "https://github.com/your-username/notebooklm-converter/issues"
+"Source" = "https://github.com/your-username/notebooklm-converter"
+
+[project.scripts]
+notebooklm-converter = "notebooklm_converter.app:main"
+
+[tool.briefcase]
+project_name = "NotebookLM Converter"
+bundle = "com.notebooklm.converter"
+version = "1.0.0"
+url = "https://github.com/your-username/notebooklm-converter"
+license = "MIT"
+author = "NotebookLM Converter Team"
+author_email = "support@notebooklm-converter.com"
+
+[tool.briefcase.app.notebooklm-converter]
+formal_name = "NotebookLM Converter"
+description = "Convert ebooks to formats optimized for NotebookLM"
+long_description = """NotebookLM Converter is a powerful desktop application that converts various ebook formats (EPUB, MOBI, AZW/KFX, iBooks, CBR/CBZ) into formats optimized for Google NotebookLM (PDF, TXT, Markdown).
+
+Features:
+• Support for multiple ebook formats
+• Batch conversion capability  
+• NotebookLM-optimized output
+• Clean, intuitive interface
+• Cross-platform compatibility
+
+Perfect for researchers, students, and anyone who wants to analyze books with AI tools."""
+icon = "src/notebooklm_converter/resources/icon"
+sources = [
+    "src/notebooklm_converter",
+]
+test_sources = [
+    "tests",
+]
+
+requires = [
+    "EbookLib>=0.18",
+    "beautifulsoup4>=4.11.0", 
+    "lxml>=4.9.0",
+    "xhtml2pdf>=0.2.5",
+    "markdown>=3.4.0",
+    "Pillow>=9.0.0",
+    "rarfile>=4.0",
+]
+
+[tool.briefcase.app.notebooklm-converter.macOS]
+requires = [
+    "toga-cocoa~=0.4.0",
+    "std-nslog~=1.0.0"
+]
+
+[tool.briefcase.app.notebooklm-converter.linux]
+requires = [
+    "toga-gtk~=0.4.0",
+]
+system_requires = [
+    "libgirepository1.0-dev",
+    "libcairo2-dev", 
+    "libpango1.0-dev",
+    "libwebkitgtk-3.0-dev",
+    "libgtk-3-dev",
+    "gir1.2-webkit-3.0",
+]
+
+[tool.briefcase.app.notebooklm-converter.linux.system.debian]
+system_runtime_requires = [
+    "libcairo-gobject2",
+    "libgtk-3-0",
+    "libgirepository-1.0-1",
+    "libwebkit2gtk-4.0-37",
+    "gir1.2-webkit2-4.0",
+]
+
+[tool.briefcase.app.notebooklm-converter.linux.system.rhel]
+system_runtime_requires = [
+    "gobject-introspection",
+    "cairo-gobject",
+    "gtk3",
+    "webkitgtk3",
+]
+
+[tool.briefcase.app.notebooklm-converter.linux.system.suse]
+system_runtime_requires = [
+    "gobject-introspection",
+    "cairo",
+    "gtk3",
+    "webkit2gtk3",
+]
+
+[tool.briefcase.app.notebooklm-converter.linux.system.arch]
+system_runtime_requires = [
+    "gobject-introspection",
+    "cairo",
+    "gtk3",
+    "webkit2gtk",
+]
+
+[tool.briefcase.app.notebooklm-converter.windows]
+requires = []
+
+# Windows-specific packaging options
+system_installer_identity = "CN=NotebookLM Converter"

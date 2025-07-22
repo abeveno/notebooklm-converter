@@ -1,0 +1,5 @@
+Collecting rarfile
+  Downloading rarfile-4.2-py3-none-any.whl.metadata (4.4 kB)
+Downloading rarfile-4.2-py3-none-any.whl (29 kB)
+Installing collected packages: rarfile
+Successfully installed rarfile-4.2

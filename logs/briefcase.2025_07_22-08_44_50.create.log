@@ -1,0 +1,503 @@
+Date/Time:       2025-07-22 08:44:50 
+Command line:    C:\Users\abeve\AppData\Local\Programs\Python\Python313\Scripts\briefcase create
+
+OS Release:      Windows 11
+OS Version:      10.0.26100
+Architecture:    AMD64
+Platform:        Windows-11-10.0.26100-SP0
+
+Python exe:      C:\Users\abeve\AppData\Local\Programs\Python\Python313\python.exe
+Python version:  3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]
+Virtual env:     False
+Conda env:       False
+
+Briefcase:       0.3.24
+Target platform: windows
+Target format:   app
+
+Environment Variables:
+	ALLUSERSPROFILE=C:\ProgramData
+	AMDRMSDKPATH=C:\Program Files\AMD\RyzenMasterSDK\
+	APPDATA=C:\Users\abeve\AppData\Roaming
+	COMMONPROGRAMFILES=C:\Program Files\Common Files
+	COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files
+	COMMONPROGRAMW6432=C:\Program Files\Common Files
+	COMPUTERNAME=LINH-PC
+	COMSPEC=C:\WINDOWS\system32\cmd.exe
+	DRIVERDATA=C:\Windows\System32\Drivers\DriverData
+	HOMEDRIVE=C:
+	HOMEPATH=\Users\abeve
+	LOCALAPPDATA=C:\Users\abeve\AppData\Local
+	LOGONSERVER=\\LINH-PC
+	NUMBER_OF_PROCESSORS=16
+	ONEDRIVE=C:\Users\abeve\OneDrive - Ketnoiso
+	ONEDRIVECOMMERCIAL=C:\Users\abeve\OneDrive - Ketnoiso
+	ONEDRIVECONSUMER=C:\Users\abeve\OneDrive
+	OS=Windows_NT
+	PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\abeve\.cargo\bin;C:\Users\abeve\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\abeve\AppData\Local\Programs\Python\Python313\;C:\Users\abeve\AppData\Local\Microsoft\WindowsApps;C:\Users\abeve\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\abeve\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\abeve\AppData\Roaming\npm;C:\Users\abeve\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-7.1.1-full_build\bin;
+	PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+	PROCESSOR_ARCHITECTURE=AMD64
+	PROCESSOR_IDENTIFIER=AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD
+	PROCESSOR_LEVEL=25
+	PROCESSOR_REVISION=2102
+	PROGRAMDATA=C:\ProgramData
+	PROGRAMFILES=C:\Program Files
+	PROGRAMFILES(X86)=C:\Program Files (x86)
+	PROGRAMW6432=C:\Program Files
+	PSMODULEPATH=C:\Users\abeve\OneDrive\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+	PUBLIC=C:\Users\Public
+	PYTHONPATH=C:\Users\abeve\OneDrive - Ketnoiso\database\library;C:\Users\abeve\OneDrive - Ketnoiso\database\library;
+	SESSIONNAME=Console
+	SYSTEMDRIVE=C:
+	SYSTEMROOT=C:\WINDOWS
+	TEMP=C:\Users\abeve\AppData\Local\Temp
+	TMP=C:\Users\abeve\AppData\Local\Temp
+	USERDOMAIN=LINH-PC
+	USERDOMAIN_ROAMINGPROFILE=LINH-PC
+	USERNAME=abeve
+	USERPROFILE=C:\Users\abeve
+	WINDIR=C:\WINDOWS
+	WSLENV=WT_SESSION:WT_PROFILE_ID:
+	WT_PROFILE_ID={61c54bbd-c2c6-5271-96e7-009a87ff44bf}
+	WT_SESSION=96ea8db8-13b5-462c-a533-2057af887151
+
+pyproject.toml:
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+    "briefcase>=0.3.16",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "notebooklm-converter"
+version = "1.0.0"
+description = "A GUI NotebookLM Converter application to convert ebooks to formats optimized for NotebookLM"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "NotebookLM Converter Team", email = "support@notebooklm-converter.com" }
+]
+keywords = ["ebook", "converter", "notebooklm", "epub", "pdf", "markdown"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+    "Topic :: Text Processing :: Markup",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "EbookLib>=0.18",
+    "beautifulsoup4>=4.11.0", 
+    "lxml>=4.9.0",
+    "xhtml2pdf>=0.2.5",
+    "markdown>=3.4.0",
+    "Pillow>=9.0.0",
+    "rarfile>=4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-username/notebooklm-converter"
+"Bug Reports" = "https://github.com/your-username/notebooklm-converter/issues"
+"Source" = "https://github.com/your-username/notebooklm-converter"
+
+[project.scripts]
+notebooklm-converter = "notebooklm_converter.app:main"
+
+[tool.briefcase]
+project_name = "NotebookLM Converter"
+bundle = "com.notebooklm.converter"
+version = "1.0.0"
+url = "https://github.com/your-username/notebooklm-converter"
+license = "MIT"
+author = "NotebookLM Converter Team"
+author_email = "support@notebooklm-converter.com"
+
+[tool.briefcase.app.notebooklm-converter]
+formal_name = "NotebookLM Converter"
+description = "Convert ebooks to formats optimized for NotebookLM"
+long_description = """NotebookLM Converter is a powerful desktop application that converts various ebook formats (EPUB, MOBI, AZW/KFX, iBooks, CBR/CBZ) into formats optimized for Google NotebookLM (PDF, TXT, Markdown).
+
+Features:
+• Support for multiple ebook formats
+• Batch conversion capability  
+• NotebookLM-optimized output
+• Clean, intuitive interface
+• Cross-platform compatibility
+
+Perfect for researchers, students, and anyone who wants to analyze books with AI tools."""
+icon = "src/notebooklm_converter/resources/icon"
+sources = [
+    "src/notebooklm_converter",
+]
+test_sources = [
+    "tests",
+]
+
+requires = [
+    "EbookLib>=0.18",
+    "beautifulsoup4>=4.11.0", 
+    "lxml>=4.9.0",
+    "xhtml2pdf>=0.2.5",
+    "markdown>=3.4.0",
+    "Pillow>=9.0.0",
+    "rarfile>=4.0",
+]
+
+[tool.briefcase.app.notebooklm-converter.macOS]
+requires = [
+    "toga-cocoa~=0.4.0",
+    "std-nslog~=1.0.0"
+]
+
+[tool.briefcase.app.notebooklm-converter.linux]
+requires = [
+    "toga-gtk~=0.4.0",
+]
+system_requires = [
+    "libgirepository1.0-dev",
+    "libcairo2-dev", 
+    "libpango1.0-dev",
+    "libwebkitgtk-3.0-dev",
+    "libgtk-3-dev",
+    "gir1.2-webkit-3.0",
+]
+
+[tool.briefcase.app.notebooklm-converter.linux.system.debian]
+system_runtime_requires = [
+    "libcairo-gobject2",
+    "libgtk-3-0",
+    "libgirepository-1.0-1",
+    "libwebkit2gtk-4.0-37",
+    "gir1.2-webkit2-4.0",
+]
+
+[tool.briefcase.app.notebooklm-converter.linux.system.rhel]
+system_runtime_requires = [
+    "gobject-introspection",
+    "cairo-gobject",
+    "gtk3",
+    "webkitgtk3",
+]
+
+[tool.briefcase.app.notebooklm-converter.linux.system.suse]
+system_runtime_requires = [
+    "gobject-introspection",
+    "cairo",
+    "gtk3",
+    "webkit2gtk3",
+]
+
+[tool.briefcase.app.notebooklm-converter.linux.system.arch]
+system_runtime_requires = [
+    "gobject-introspection",
+    "cairo",
+    "gtk3",
+    "webkit2gtk",
+]
+
+[tool.briefcase.app.notebooklm-converter.windows]
+requires = []
+
+# Windows-specific packaging options
+system_installer_identity = "CN=NotebookLM Converter"
+
+Briefcase Log:
+[08:44:50]                                                                                                                                                             config.py:666
+           *************************************************************************                                                                                   config.py:666
+           ** WARNING: License Definition for the Project is Deprecated           **                                                                                   config.py:666
+           *************************************************************************                                                                                   config.py:666
+                                                                                                                                                                       config.py:666
+               Briefcase now uses PEP 621 format for license definitions.                                                                                              config.py:666
+                                                                                                                                                                       config.py:666
+               Previously, the name of the license was assigned to the 'license'                                                                                       config.py:666
+               field in pyproject.toml. For PEP 621, the name of the license is                                                                                        config.py:666
+               assigned to 'license.text' or the name of the file containing the                                                                                       config.py:666
+               license is assigned to 'license.file'.                                                                                                                  config.py:666
+                                                                                                                                                                       config.py:666
+               The current configuration for the Project has a 'license' field                                                                                         config.py:666
+               that is specified as a string:                                                                                                                          config.py:666
+                                                                                                                                                                       config.py:666
+                   license = "MIT"                                                                                                                                     config.py:666
+                                                                                                                                                                       config.py:666
+               To use the PEP 621 format (and to remove this warning), specify that                                                                                    config.py:666
+               the LICENSE file contains the license for the Project:                                                                                                  config.py:666
+                                                                                                                                                                       config.py:666
+                   license.file = "LICENSE"                                                                                                                            config.py:666
+                                                                                                                                                                       config.py:666
+           *************************************************************************                                                                                   config.py:666
+                                                                                                                                                                      __main__.py:42
+           Briefcase requires git, but it is not installed (or is not on your PATH). Visit:                                                                           __main__.py:43
+                                                                                                                                                                      __main__.py:43
+               https://git-scm.com/                                                                                                                                   __main__.py:43
+                                                                                                                                                                      __main__.py:43
+           to download and install git manually.                                                                                                                      __main__.py:43
+                                                                                                                                                                      __main__.py:43
+           If you have installed git recently and are still getting this error, you may                                                                               __main__.py:43
+           need to restart your terminal session.                                                                                                                     __main__.py:43
+           Saving log... started                                                                                                                                      console.py:433
+
+Main thread traceback:
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\git\__init__.py:296 in <module>                                                                         │
+│                                                                                                                                                                                  │
+│   293                                                                                                                                                                            │
+│   294                                                                                                                                                                            │
+│   295 try:                                                                                                                                                                       │
+│ ❱ 296 │   refresh()                                                                                                                                                              │
+│   297 except Exception as _exc:                                                                                                                                                  │
+│   298 │   raise ImportError("Failed to initialize: {0}".format(_exc)) from _exc                                                                                                  │
+│   299                                                                                                                                                                            │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────────────────────────────────── locals ──────────────────────────────────────────────────────────────────────────╮                   │
+│ │           cmd = <module 'git.cmd' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\cmd.py'>                   │                   │
+│ │        compat = <module 'git.compat' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\compat.py'>             │                   │
+│ │        config = <module 'git.config' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\config.py'>             │                   │
+│ │            db = <module 'git.db' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\db.py'>                     │                   │
+│ │          diff = <module 'git.diff' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\diff.py'>                 │                   │
+│ │           exc = <module 'git.exc' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\exc.py'>                   │                   │
+│ │        GIT_OK = False                                                                                                                                      │                   │
+│ │         INDEX = <DiffConstants.INDEX: 2>                                                                                                                   │                   │
+│ │         index = <module 'git.index' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\index\\__init__.py'>     │                   │
+│ │          List = typing.List                                                                                                                                │                   │
+│ │     NULL_TREE = <DiffConstants.NULL_TREE: 1>                                                                                                               │                   │
+│ │       objects = <module 'git.objects' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\objects\\__init__.py'> │                   │
+│ │      Optional = typing.Optional                                                                                                                            │                   │
+│ │      PathLike = typing.Union[str, ForwardRef('os.PathLike[str]')]                                                                                          │                   │
+│ │          refs = <module 'git.refs' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\refs\\__init__.py'>       │                   │
+│ │        remote = <module 'git.remote' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\remote.py'>             │                   │
+│ │          repo = <module 'git.repo' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\repo\\__init__.py'>       │                   │
+│ │      Sequence = typing.Sequence                                                                                                                            │                   │
+│ │         Tuple = typing.Tuple                                                                                                                               │                   │
+│ │ TYPE_CHECKING = False                                                                                                                                      │                   │
+│ │         types = <module 'git.types' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\types.py'>               │                   │
+│ │         Union = typing.Union                                                                                                                               │                   │
+│ │      warnings = <module 'warnings' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\warnings.py'>                                 │                   │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                   │
+│                                                                                                                                                                                  │
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\git\__init__.py:287 in refresh                                                                          │
+│                                                                                                                                                                                  │
+│   284 │   global GIT_OK                                                                        ╭── locals ───╮                                                                   │
+│   285 │   GIT_OK = False                                                                       │ path = None │                                                                   │
+│   286 │                                                                                        ╰─────────────╯                                                                   │
+│ ❱ 287 │   if not Git.refresh(path=path):                                                                                                                                         │
+│   288 │   │   return                                                                                                                                                             │
+│   289 │   if not FetchInfo.refresh():  # noqa: F405                                                                                                                              │
+│   290 │   │   return  # type: ignore[unreachable]                                                                                                                                │
+│                                                                                                                                                                                  │
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\git\cmd.py:631 in refresh                                                                               │
+│                                                                                                                                                                                  │
+│    628 │   │   │   │   │   if mode in warn:                                                                                                                                      │
+│    629 │   │   │   │   │   │   _logger.critical(err)                                                                                                                             │
+│    630 │   │   │   │   │   else:                                                                                                                                                 │
+│ ❱  631 │   │   │   │   │   │   raise ImportError(err)                                                                                                                            │
+│    632 │   │   │   │   else:                                                                                                                                                     │
+│    633 │   │   │   │   │   err = dedent(                                                                                                                                         │
+│    634 │   │   │   │   │   │   """\                                                                                                                                              │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────────── locals ───────────────────────────────────────────────────╮                                                                  │
+│ │               err = 'Bad git executable.\nThe git executable must be specified in one of the following'+633 │                                                                  │
+│ │             error = ['error', 'e', 'exception', 'raise', 'r', '2']                                          │                                                                  │
+│ │           has_git = False                                                                                   │                                                                  │
+│ │              mode = 'raise'                                                                                 │                                                                  │
+│ │           new_git = 'git'                                                                                   │                                                                  │
+│ │           old_git = None                                                                                    │                                                                  │
+│ │ old_refresh_token = <object object at 0x000002DA7D311D10>                                                   │                                                                  │
+│ │              path = None                                                                                    │                                                                  │
+│ │             quiet = ['quiet', 'q', 'silence', 's', 'silent', 'none', 'n', '0']                              │                                                                  │
+│ │              warn = ['warn', 'w', 'warning', 'log', 'l', '1']                                               │                                                                  │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ImportError: Bad git executable.
+The git executable must be specified in one of the following ways:
+    - be included in your $PATH
+    - be set via $GIT_PYTHON_GIT_EXECUTABLE
+    - explicitly set via git.refresh(<full-path-to-git-executable>)
+
+All git commands will error until this is rectified.
+
+This initial message can be silenced or aggravated in the future by setting the
+$GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+    - quiet|q|silence|s|silent|none|n|0: for no message or exception
+    - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+    - error|e|exception|raise|r|2: for a raised exception
+
+Example:
+    export GIT_PYTHON_REFRESH=quiet
+
+
+The above exception was the direct cause of the following exception:
+
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\briefcase\integrations\git.py:40 in verify_install                                                      │
+│                                                                                                                                                                                  │
+│   37 │   │                                                                                    ╭─────────────────────────────────── locals ────────────────────────────────────╮  │
+│   38 │   │   # Check whether the git executable could be imported.                            │ kwargs = {'app': None}                                                        │  │
+│   39 │   │   try:                                                                             │  tools = <briefcase.integrations.base.ToolCache object at 0x000002DA010CE660> │  │
+│ ❱ 40 │   │   │   import git                                                                   ╰───────────────────────────────────────────────────────────────────────────────╯  │
+│   41 │   │   except ImportError as e:  # pragma: no cover                                                                                                                        │
+│   42 │   │   │   # macOS provides git as part of the Xcode command line tools,                                                                                                   │
+│   43 │   │   │   # and also hijacks /usr/bin/git with a trigger that prompts the                                                                                                 │
+│                                                                                                                                                                                  │
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\git\__init__.py:298 in <module>                                                                         │
+│                                                                                                                                                                                  │
+│   295 try:                                                                                                                                                                       │
+│   296 │   refresh()                                                                                                                                                              │
+│   297 except Exception as _exc:                                                                                                                                                  │
+│ ❱ 298 │   raise ImportError("Failed to initialize: {0}".format(_exc)) from _exc                                                                                                  │
+│   299                                                                                                                                                                            │
+│   300 # } END initialize git executable path                                                                                                                                     │
+│   301                                                                                                                                                                            │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────────────────────────────────── locals ──────────────────────────────────────────────────────────────────────────╮                   │
+│ │           cmd = <module 'git.cmd' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\cmd.py'>                   │                   │
+│ │        compat = <module 'git.compat' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\compat.py'>             │                   │
+│ │        config = <module 'git.config' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\config.py'>             │                   │
+│ │            db = <module 'git.db' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\db.py'>                     │                   │
+│ │          diff = <module 'git.diff' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\diff.py'>                 │                   │
+│ │           exc = <module 'git.exc' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\exc.py'>                   │                   │
+│ │        GIT_OK = False                                                                                                                                      │                   │
+│ │         INDEX = <DiffConstants.INDEX: 2>                                                                                                                   │                   │
+│ │         index = <module 'git.index' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\index\\__init__.py'>     │                   │
+│ │          List = typing.List                                                                                                                                │                   │
+│ │     NULL_TREE = <DiffConstants.NULL_TREE: 1>                                                                                                               │                   │
+│ │       objects = <module 'git.objects' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\objects\\__init__.py'> │                   │
+│ │      Optional = typing.Optional                                                                                                                            │                   │
+│ │      PathLike = typing.Union[str, ForwardRef('os.PathLike[str]')]                                                                                          │                   │
+│ │          refs = <module 'git.refs' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\refs\\__init__.py'>       │                   │
+│ │        remote = <module 'git.remote' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\remote.py'>             │                   │
+│ │          repo = <module 'git.repo' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\repo\\__init__.py'>       │                   │
+│ │      Sequence = typing.Sequence                                                                                                                            │                   │
+│ │         Tuple = typing.Tuple                                                                                                                               │                   │
+│ │ TYPE_CHECKING = False                                                                                                                                      │                   │
+│ │         types = <module 'git.types' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\git\\types.py'>               │                   │
+│ │         Union = typing.Union                                                                                                                               │                   │
+│ │      warnings = <module 'warnings' from 'C:\\Users\\abeve\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\warnings.py'>                                 │                   │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                   │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ImportError: Failed to initialize: Bad git executable.
+The git executable must be specified in one of the following ways:
+    - be included in your $PATH
+    - be set via $GIT_PYTHON_GIT_EXECUTABLE
+    - explicitly set via git.refresh(<full-path-to-git-executable>)
+
+All git commands will error until this is rectified.
+
+This initial message can be silenced or aggravated in the future by setting the
+$GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+    - quiet|q|silence|s|silent|none|n|0: for no message or exception
+    - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+    - error|e|exception|raise|r|2: for a raised exception
+
+Example:
+    export GIT_PYTHON_REFRESH=quiet
+
+
+The above exception was the direct cause of the following exception:
+
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\briefcase\__main__.py:27 in main                                                                        │
+│                                                                                                                                                                                  │
+│   24 │   │   │   Path.cwd() / "pyproject.toml",                                                                                                                                  │
+│   25 │   │   │   overrides=overrides,                                                                                                                                            │
+│   26 │   │   )                                                                                                                                                                   │
+│ ❱ 27 │   │   command(**options)                                                                                                                                                  │
+│   28 │   except HelpText as e:                                                                                                                                                   │
+│   29 │   │   console.info()                                                                                                                                                      │
+│   30 │   │   console.info(str(e))                                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────────────────────────────╮ │
+│ │       command = <briefcase.platforms.windows.app.WindowsAppCreateCommand object at 0x000002DA010CDA90>                                                                       │ │
+│ │       console = <briefcase.console.Console object at 0x000002DA00F6F770>                                                                                                     │ │
+│ │             e = BriefcaseCommandError('Briefcase requires git, but it is not installed (or is not on your PATH). Visit:\n\n    https://git-scm.com/\n\nto download and       │ │
+│ │                 install git manually.\n\nIf you have installed git recently and are still getting this error, you may\nneed to restart your terminal session.\n')            │ │
+│ │ extra_cmdline = []                                                                                                                                                           │ │
+│ │       options = {}                                                                                                                                                           │ │
+│ │     overrides = {}                                                                                                                                                           │ │
+│ │        result = 200                                                                                                                                                          │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                                                                                  │
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\briefcase\commands\create.py:1009 in __call__                                                           │
+│                                                                                                                                                                                  │
+│   1006 │   ) -> dict | None:                                                                                                                                                     │
+│   1007 │   │   # Confirm host compatibility, that all required tools are available,                                                                                              │
+│   1008 │   │   # and that the app configuration is finalized.                                                                                                                    │
+│ ❱ 1009 │   │   self.finalize(app)                                                                                                                                                │
+│   1010 │   │                                                                                                                                                                     │
+│   1011 │   │   if app_name:                                                                                                                                                      │
+│   1012 │   │   │   try:                                                                                                                                                          │
+│                                                                                                                                                                                  │
+│ ╭───────────────────────────────────────────── locals ──────────────────────────────────────────────╮                                                                            │
+│ │      app = None                                                                                   │                                                                            │
+│ │ app_name = None                                                                                   │                                                                            │
+│ │  options = {}                                                                                     │                                                                            │
+│ │     self = <briefcase.platforms.windows.app.WindowsAppCreateCommand object at 0x000002DA010CDA90> │                                                                            │
+│ ╰───────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                            │
+│                                                                                                                                                                                  │
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\briefcase\commands\base.py:699 in finalize                                                              │
+│                                                                                                                                                                                  │
+│    696 │   │   │   to finalize. By default, all apps will be finalized.                                                                                                          │
+│    697 │   │   """                                                                                                                                                               │
+│    698 │   │   self.verify_host()                                                                                                                                                │
+│ ❱  699 │   │   self.verify_tools()                                                                                                                                               │
+│    700 │   │                                                                                                                                                                     │
+│    701 │   │   apps = self.apps.values() if app is None else [app]                                                                                                               │
+│    702 │   │   for app in apps:                                                                                                                                                  │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────── locals ──────────────────────────────────────────────╮                                                                           │
+│ │       app = None                                                                                   │                                                                           │
+│ │      self = <briefcase.platforms.windows.app.WindowsAppCreateCommand object at 0x000002DA010CDA90> │                                                                           │
+│ │ test_mode = False                                                                                  │                                                                           │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                           │
+│                                                                                                                                                                                  │
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\briefcase\commands\create.py:994 in verify_tools                                                        │
+│                                                                                                                                                                                  │
+│    991 │   │   Raises MissingToolException if a required system tool is missing.                                                                                                 │
+│    992 │   │   """                                                                                                                                                               │
+│    993 │   │   super().verify_tools()                                                                                                                                            │
+│ ❱  994 │   │   Git.verify(tools=self.tools)                                                                                                                                      │
+│    995 │                                                                                                                                                                         │
+│    996 │   def verify_app_tools(self, app: AppConfig):                                                                                                                           │
+│    997 │   │   """Verify that tools needed to run the command for this app exist."""                                                                                             │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────── locals ────────────────────────────────────────────╮                                                                                │
+│ │ self = <briefcase.platforms.windows.app.WindowsAppCreateCommand object at 0x000002DA010CDA90> │                                                                                │
+│ ╰───────────────────────────────────────────────────────────────────────────────────────────────╯                                                                                │
+│                                                                                                                                                                                  │
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\briefcase\integrations\base.py:78 in verify                                                             │
+│                                                                                                                                                                                  │
+│    75 │   ) -> ToolT:                                                                          ╭─────────────────────────────────── locals ────────────────────────────────────╮ │
+│    76 │   │   """Confirm the tool is available and usable on the host platform."""             │    app = None                                                                 │ │
+│    77 │   │   cls.verify_host(tools=tools)                                                     │ kwargs = {}                                                                   │ │
+│ ❱  78 │   │   tool = cls.verify_install(tools=tools, app=app, **kwargs)                        │  tools = <briefcase.integrations.base.ToolCache object at 0x000002DA010CE660> │ │
+│    79 │   │   return tool                                                                      ╰───────────────────────────────────────────────────────────────────────────────╯ │
+│    80 │                                                                                                                                                                          │
+│    81 │   @classmethod                                                                                                                                                           │
+│                                                                                                                                                                                  │
+│ C:\Users\abeve\AppData\Local\Programs\Python\Python313\Lib\site-packages\briefcase\integrations\git.py:65 in verify_install                                                      │
+│                                                                                                                                                                                  │
+│   62 │   │   │   │   ) from e                                                                 ╭─────────────────────────────────── locals ────────────────────────────────────╮  │
+│   63 │   │   │                                                                                │ kwargs = {'app': None}                                                        │  │
+│   64 │   │   │   else:                                                                        │  tools = <briefcase.integrations.base.ToolCache object at 0x000002DA010CE660> │  │
+│ ❱ 65 │   │   │   │   raise BriefcaseCommandError(                                             ╰───────────────────────────────────────────────────────────────────────────────╯  │
+│   66 │   │   │   │   │   f"""\                                                                                                                                                   │
+│   67 Briefcase requires git, but it is not installed (or is not on your PATH). Visit:                                                                                            │
+│   68                                                                                                                                                                             │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+BriefcaseCommandError: Briefcase requires git, but it is not installed (or is not on your PATH). Visit:
+
+    https://git-scm.com/
+
+to download and install git manually.
+
+If you have installed git recently and are still getting this error, you may
+need to restart your terminal session.
+

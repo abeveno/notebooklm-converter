@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Briefcase-Version: 0.3.24
+Name: notebooklm-converter
+Formal-Name: NotebookLM Converter
+App-ID: com.notebooklm.converter.notebooklm-converter
+Version: 1.0.0
+Home-page: https://github.com/your-username/notebooklm-converter
+Download-URL: https://github.com/your-username/notebooklm-converter
+Author: NotebookLM Converter Team
+Author-email: support@notebooklm-converter.com
+Summary: Convert ebooks to formats optimized for NotebookLM
