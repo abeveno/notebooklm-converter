@@ -98,12 +98,32 @@ jobs:
       continue-on-error: true  # Không fail nếu icon creation lỗi
     
     - name: Create Briefcase app
-      run: briefcase create
+      run: briefcase create --clean
       continue-on-error: false
     
+    - name: Debug after create
+      run: |
+        echo "=== Build directory after create ==="
+        if (Test-Path "build") {
+          Get-ChildItem -Recurse build | Select-Object Name, FullName
+        } else {
+          echo "No build directory found"
+        }
+      continue-on-error: true
+    
     - name: Build Briefcase app  
-      run: briefcase build
+      run: briefcase build --clean
       continue-on-error: false
+    
+    - name: Debug after build  
+      run: |
+        echo "=== Build directory after build ==="
+        if (Test-Path "build") {
+          Get-ChildItem -Recurse build | Select-Object Name, FullName
+        } else {
+          echo "No build directory found"
+        }
+      continue-on-error: true
     
     - name: Package Briefcase app - macOS
       if: matrix.os == 'macos-latest'
