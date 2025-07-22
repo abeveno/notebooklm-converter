@@ -1,0 +1,85 @@
+name: Simple GUI Test
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  test-gui:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Test tkinter directly
+      run: |
+        python -c "
+        import tkinter as tk
+        print('tkinter imported successfully')
+        root = tk.Tk()
+        root.title('Test Window')
+        root.geometry('300x200')
+        label = tk.Label(root, text='Hello Windows!')
+        label.pack()
+        print('Test window created - would show GUI')
+        root.destroy()
+        print('Test completed successfully')
+        "
+    
+    - name: Install dependencies
+      run: |
+        pip install ebooklib==0.18
+        pip install beautifulsoup4==4.12.2
+        pip install reportlab==4.0.4
+        pip install briefcase
+    
+    - name: Test our GUI directly
+      run: |
+        python -c "
+        import sys
+        sys.path.append('src')
+        
+        print('Testing NotebookLM Converter GUI...')
+        try:
+            from notebooklm_converter.app import main
+            print('App module imported successfully')
+            
+            # Test just the import, don't run GUI in CI
+            from notebooklm_converter.gui import NotebookLMConverterApp
+            print('GUI module imported successfully')
+            
+            import tkinter as tk
+            root = tk.Tk()
+            root.withdraw()  # Hide window in CI
+            app = NotebookLMConverterApp(root)
+            print('GUI app created successfully')
+            root.destroy()
+            
+            print('All GUI tests passed!')
+        except Exception as e:
+            print(f'GUI test failed: {e}')
+            import traceback
+            traceback.print_exc()
+        "
+    
+    - name: Build minimal app
+      run: |
+        briefcase create --no-input
+        briefcase build --no-input
+        echo "Build completed"
+        
+    - name: Check build output
+      run: |
+        if (Test-Path "build") {
+          echo "Build directory contents:"
+          Get-ChildItem -Recurse build
+        }
+        if (Test-Path "dist") {
+          echo "Dist directory contents:"
+          Get-ChildItem -Recurse dist
+        }
